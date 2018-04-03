@@ -1,3 +1,4 @@
+# Start with Alpine Linux because it's small and out-of-the-box stable
 FROM   alpine
 
 # ---------------- #
