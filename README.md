@@ -1,14 +1,15 @@
-StatsD + Graphite + Grafana 4 + Kamon Dashboards
+StatsD + Graphite + Grafana
 ---------------------------------------------
 
 This image contains a sensible default configuration of StatsD, Graphite and Grafana, and comes bundled with a example
-dashboard that gives you the basic metrics currently collected by Kamon for both Actors and Traces. There are two ways
-for using this image:
+dashboard that gives some basic metrics.
+
+There are two ways to use this image:
 
 
 ### Using the Docker Index ###
 
-This image is published under [Kamon's repository on the Docker Hub](https://hub.docker.com/u/kamon/) and all you
+This image is published under [John Metta's repository on the Docker Hub](https://hub.docker.com/u/johnmetta/) and all you
 need as a prerequisite is having `docker`, `docker-compose`, and `make` installed on your machine. The container exposes the following ports:
 
 - `80`: the Grafana web interface.
@@ -44,7 +45,7 @@ ports to whatever you want by changing left side number in the `--publish` param
 
 ### Building the image yourself ###
 
-The Dockerfile and supporting configuration files are available in our [Github repository](https://github.com/kamon-io/docker-grafana-graphite).
+The Dockerfile and supporting configuration files are available in our [Github repository](https://github.com/mettadore/grafanyx).
 This comes specially handy if you want to change any of the StatsD, Graphite or Grafana settings, or simply if you want
 to know how the image was built.
 
@@ -53,7 +54,7 @@ to know how the image was built.
 
 Once your container is running all you need to do is:
 
-- open your browser pointing to http://localhost:80 (or another port if you changed it)
+- open your browser pointing to http://localhost:8080
   - Docker with VirtualBox on macOS: use `docker-machine ip` instead of `localhost`
 - login with the default username (admin) and password (admin)
 - open existing dashboard (or create a new one) and select 'Local Graphite' datasource
@@ -65,11 +66,6 @@ Once your container is running all you need to do is:
 When running `make up`, directories are created on your host and mounted into the Docker container, allowing graphite and grafana to persist data and settings between runs of the container.
 
 
-### Now go explore! ###
+### Credits ###
 
-We hope that you have a lot of fun with this image and that it serves it's
-purpose of making your life easier. This should give you an idea of how the dashboard looks like when receiving data
-from one of our toy applications:
-
-![Kamon Dashboard](http://kamon.io/assets/img/kamon-statsd-grafana.png)
-![System Metrics Dashboard](http://kamon.io/assets/img/kamon-system-metrics.png)
+This repo was stolen from the [Kamon image called docker-grafana-graphite](http://github.com/kamon-io/docker-grafana-graphite), but the fork's path is too divergent to keep it connected because it's specific for a single usecase, so I renamed and deforked it.
