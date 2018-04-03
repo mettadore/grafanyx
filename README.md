@@ -2,7 +2,7 @@ StatsD + Graphite + Grafana
 ---------------------------------------------
 
 This image contains a sensible default configuration of StatsD, Graphite and Grafana, and comes bundled with a example
-dashboard that gives some basic metrics.
+dashboard that gives some basic metrics. It provides Grafana on web port 8080 to allow for an existing installation of Apache.
 
 There are two ways to use this image:
 
@@ -12,7 +12,7 @@ There are two ways to use this image:
 This image is published under [John Metta's repository on the Docker Hub](https://hub.docker.com/u/johnmetta/) and all you
 need as a prerequisite is having `docker`, `docker-compose`, and `make` installed on your machine. The container exposes the following ports:
 
-- `80`: the Grafana web interface.
+- `8080`: the Grafana web interface.
 - `81`: the Graphite web port
 - `2003`: the Graphite data port
 - `8125`: the StatsD port.
