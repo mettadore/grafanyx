@@ -2,8 +2,8 @@ version: '2'
 services:
   grafana_graphite:
     build: .
-    image: kamon/grafana_graphite
-    container_name: kamon-grafana-dashboard
+    image: johnmetta/grafanyx
+    container_name: grafanyx
     ports:
       - '8080:80'
       - '81:81'
