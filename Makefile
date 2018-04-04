@@ -42,6 +42,6 @@ docker :
 	sudo add-apt-repository \
    		"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(shell lsb_release -cs) stable"
 	sudo apt-get update
-	sudo apt-get install -y docker-ce
+	sudo apt-get install -y docker-ce docker-compose
 	sudo usermod -aG docker $USER
 	sudo systemctl enable docker
