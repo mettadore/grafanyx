@@ -1,7 +1,7 @@
-# docker-grafana-graphite makefile
+# grafanyx makefile
 
 # Environment Varibles
-CONTAINER = kamon-grafana-dashboard
+CONTAINER = grafanyx
 
 .PHONY: up
 
