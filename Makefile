@@ -7,12 +7,12 @@ CONTAINER = grafanyx
 
 prep :
 	mkdir -p \
-		data/whisper \
-		data/elasticsearch \
-		data/grafana \
-		log/graphite \
-		log/graphite/webapp \
-		log/elasticsearch
+		/var/data/whisper \
+		/var/data/elasticsearch \
+		/var/data/grafana \
+		/var/log/graphite \
+		/var/log/graphite/webapp \
+		/var/log/elasticsearch
 
 pull :
 	docker-compose pull
@@ -43,5 +43,5 @@ docker :
    		"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(shell lsb_release -cs) stable"
 	sudo apt-get update
 	sudo apt-get install -y docker-ce docker-compose
-	sudo usermod -aG docker $USER
+	sudo usermod -aG docker $(USER)
 	sudo systemctl enable docker
