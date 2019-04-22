@@ -8,16 +8,18 @@ FROM   alpine
 # Install all prerequisites
 RUN     apk add --update --no-cache nginx nodejs nodejs-npm git curl wget gcc ca-certificates \
                                     python-dev py-pip musl-dev libffi-dev cairo supervisor bash \
-                                    py-pyldap py-rrd                                                                 &&\
-        wget -q -O /etc/apk/keys/sgerrand.rsa.pub \
-                    https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub              &&\
-        wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk                &&\
-        apk add --no-cache  glibc-2.26-r0.apk                                                                        &&\
-        rm glibc-2.26-r0.apk                                                                                         &&\
-        adduser -D -u 1000 -g 'www' www                                                                              &&\
-        pip install -U pip pytz gunicorn six --no-cache-dir                                                          &&\
-        npm install -g wizzy                                                                                         &&\
-        npm cache clean --force
+                                    py-pyldap py-rrd                                                                 
+                                    
+RUN     wget -q -O /etc/apk/keys/sgerrand.rsa.pub
+                    https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub              
+RUN     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk                
+
+RUN     apk add --no-cache  glibc-2.26-r0.apk
+RUN     rm glibc-2.26-r0.apk
+RUN     adduser -D -u 1000 -g 'www' www
+RUN     pip install -U pip pytz gunicorn six --no-cache-dir
+RUN     npm install -g wizzy
+RUN     npm cache clean --force
 
 # Checkout the master branches of Graphite, Carbon and Whisper and install from there
 RUN     mkdir /src                                                                                                   &&\
