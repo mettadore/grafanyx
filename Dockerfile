@@ -10,12 +10,11 @@ RUN     apk add --update --no-cache nginx nodejs nodejs-npm git curl wget gcc ca
                                     python-dev py-pip musl-dev libffi-dev cairo supervisor bash \
                                     py-pyldap py-rrd                                                                 
                                     
-RUN     wget -q -O /etc/apk/keys/sgerrand.rsa.pub
-                    https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub              
-RUN     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk                
+RUN    apk --no-cache add ca-certificates wget
+RUN    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+RUN    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.29-r0/glibc-2.29-r0.apk
+RUN    apk add glibc-2.29-r0.apk
 
-RUN     apk add --no-cache  glibc-2.26-r0.apk
-RUN     rm glibc-2.26-r0.apk
 RUN     adduser -D -u 1000 -g 'www' www
 RUN     pip install -U pip pytz gunicorn six --no-cache-dir
 RUN     npm install -g wizzy
