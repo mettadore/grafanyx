@@ -1,6 +1,7 @@
 version: '2'
 services:
   grafana_graphite:
+    restart: always
     build: .
     image: johnmetta/grafanyx
     container_name: grafanyx
